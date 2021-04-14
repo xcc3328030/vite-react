@@ -1,23 +1,21 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { Component } from 'react'
+import Header from './compontents/Header'
+import List from './compontents/List'
+import Footer from './compontents/Footer'
+import './index.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-      </header>
-    </div>
-  )
+class App extends Component {
+    render() {
+        return (
+            <div className="todo-container">
+               <div className="todo-wrap">
+                    <Header />
+                    <List />
+                    <Footer />
+                </div>
+            </div>
+        );
+    }
 }
 
-export default App
+export default App;
