@@ -4,12 +4,12 @@ import Item from '../Item'
 class List extends Component {
 
     render() {
-        const {todos} = this.props
+        const {todos, updateTodo, deleteTodo} = this.props
         return (
             <ul className="todo-main">
                 {
                     todos.map(todo => {
-                        return   <Item key={todo.id} {...todo} />
+                        return   <Item key={todo.id} {...todo} updateTodo={updateTodo} deleteTodo={deleteTodo} />
                     })
                 }
             </ul>

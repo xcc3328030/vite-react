@@ -28,14 +28,56 @@ class App extends Component {
         })
     }
 
+    updateTodo = (id: number, done: boolean):void=>{
+        // 获取状态中的todos
+        const {todos} = this.state
+        const newTodos = todos.map(todo => {
+            if(todo.id === id) return {...todo, done}
+            else return todo
+        })
+        this.setState({
+            todos: newTodos
+        })
+    }
+
+    checkAllTodo = (done: boolean)=>{
+        const {todos} = this.state
+        const newTodos = todos.map(todo => {
+            return {...todo, done}
+        })
+        this.setState({
+            todos: newTodos
+        })
+    }
+
+    deleteTodo = (id: number) =>{
+       const {todos} = this.state
+       const newTodos = todos.filter(todo=>{
+            return todo.id !== id
+        })
+        this.setState({
+            todos: newTodos
+        })
+    }
+
+    clearDone = () => {
+        const {todos} = this.state
+       const newTodos = todos.filter(todo=>{
+            return !todo.done
+        })
+        this.setState({
+            todos: newTodos
+        })
+    }
+
     render() {
         const { todos } = this.state
         return (
             <div className="todo-container">
                <div className="todo-wrap">
                     <Header addTodo={this.addTodo} />
-                    <List todos={todos} />
-                    <Footer />
+                    <List todos={todos} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} />
+                    <Footer todos={todos} checkAllTodo={this.checkAllTodo} clearDone={this.clearDone} />
                 </div>
             </div>
         );

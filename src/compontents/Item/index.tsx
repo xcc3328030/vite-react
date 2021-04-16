@@ -9,8 +9,13 @@ class Item extends Component {
     }
 
     handleChange = (event:any,id:string)=>{
-        console.log(event.target.checked)
-        console.log(id)
+        this.props.updateTodo(id, event.target.checked)
+    }
+
+    handleDelete = (id: number) =>{
+        if(window.confirm("你确定删除吗？")){
+             this.props.deleteTodo(id)
+        }
     }
     
     render() {
@@ -19,10 +24,10 @@ class Item extends Component {
         return (
             <li style={{backgroundColor: mouse?'#ddd':'white'}} onMouseLeave={()=>this.handleMouse(false)} onMouseEnter={()=>this.handleMouse(true)}>
                 <label>
-                    <input type="checkbox" defaultChecked={done} onChange={(event)=>this.handleChange(event, id)} />
+                    <input type="checkbox" checked={done} onChange={(event)=>this.handleChange(event, id)} />
                     <span>{name}</span>
                 </label>
-                <button className="btn btn-danger" style={{display:mouse?'block':'none'}}>删除</button>
+                <button onClick={() => this.handleDelete(id)} className="btn btn-danger" style={{display:mouse?'block':'none'}}>删除</button>
             </li>
         )
     }
