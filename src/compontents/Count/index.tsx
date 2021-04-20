@@ -1,51 +1,55 @@
 import React, { Component } from 'react';
+import store from '../../redux/store'
 
 class Count extends Component {
-    state = {
-        count: 0
-    }
+
+    // componentDidMount(){
+    //     store.subscribe(()=>{
+    //         this.setState({})
+    //     })
+    // }
 
     add = () => {
         const {value} = this.selectNmuber
-        const {count} = this.state
-        this.setState({
-            count: count + value*1
+        store.dispatch({
+            type: 'add',
+            data: value*1
         })
     }
     
     deAdd = () => {
         const {value} = this.selectNmuber
-        const {count} = this.state
-        this.setState({
-            count: count - value*1
-        }) 
+        store.dispatch({
+            type: 'deAdd',
+            data: value*1
+        })
     }
 
     addIfOadd = () => {
         const {value} = this.selectNmuber
-        const {count} = this.state
+        const count = store.getState()
         if(count % 2 !== 0){
-            this.setState({
-                count: count + value*1
-            }) 
+            store.dispatch({
+                type: 'addIfOadd',
+                data: value*1
+            })
         }
-       
     }
 
     addIfAsync = () => {
         const {value} = this.selectNmuber
-        const {count} = this.state
         setTimeout(() => {
-            this.setState({
-                count: count + value*1
-            }) 
+            store.dispatch({
+                type: 'addIfAsync',
+                data: value*1
+            })
         }, 1000)
     }
 
     render() {
         return (
             <div>
-                <h1>当前求和为：{this.state.count}</h1>
+                <h1>当前求和为：{store.getState()}</h1>
                 <select ref={c=>this.selectNmuber=c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
