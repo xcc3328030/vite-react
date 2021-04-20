@@ -13,15 +13,17 @@ class Detail extends Component {
     render() {
         // params 路由传参
         // const {id, name} = this.props.match.params
-
+console.log(this.props)
         // search传参
-       const { search } = this.props.location
-       const {id, name} = qs.parse(search.slice(1))
+        const { search } = this.props.location
+        const {id, name} = qs.parse(search.slice(1))
 
+        // state 传参
+        // const { id, name } = this.props.location.state
 
         let obj = this.state.data.find(item=> {
             return item.id === id
-        })
+        }) || {}
         return (
             <div>
                 <li>id: {id}</li>
