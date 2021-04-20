@@ -13,7 +13,6 @@ class Detail extends Component {
     render() {
         // params 路由传参
         // const {id, name} = this.props.match.params
-console.log(this.props)
         // search传参
         const { search } = this.props.location
         const {id, name} = qs.parse(search.slice(1))
