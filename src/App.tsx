@@ -31,13 +31,13 @@ class App extends Component {
 
                     <div className="col-xs-6">
                         <div className="panel">
-                        <div className="panel-body">
-                            <Switch>
-                                <Route path="/about" component={About}></Route>
-                                <Route path="/home"  component={Home}></Route>
-                                <Redirect to="/about"></Redirect>
-                            </Switch>
-                        </div>
+                            <div className="panel-body">
+                                <Switch>
+                                    <Route path="/about" component={About}></Route>
+                                    <Route path="/home"  component={Home}></Route>
+                                    <Redirect to="/about"></Redirect>
+                                </Switch>
+                            </div>
                         </div>
                     </div>
                 </div>
