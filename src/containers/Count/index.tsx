@@ -2,7 +2,7 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react';
 
-import { createIncrementAction, createDecrementAction, asyncAction } from '../../redux/action/count'
+import { createIncrementAction, createDecrementAction, asyncAction } from '../../redux/actions/count'
 
 // const mapStateToProps = state =>  ({ count: state})
 // const mapDispatchToProps = (dispatch) => {
@@ -52,7 +52,9 @@ class Count extends Component {
     render() {
         return (
             <div>
-                <h1>当前求和为：{this.props.count}</h1>
+                <h1>我是count组件</h1>
+                <h4>当前求和为：{this.props.count}</h4>
+                <h3>下方人数为：{this.props.renshu}</h3>
                 <select ref={c=>this.selectNmuber=c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -68,7 +70,7 @@ class Count extends Component {
 }
 
 export default connect(
-    state =>  ({ count: state}), 
+    state =>  ({ count: state.he, renshu: state.ren.length}), 
     {
         addNumber: createIncrementAction,
         deNumber: createDecrementAction,
