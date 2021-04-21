@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import store from '../../redux/store'
-import { createIncrementAction, createDecrementAction, asyncAction } from '../../redux/count_action';
+import { increment, decrement, asyncAction } from '../../redux/count_action';
 
 class Count extends Component {
 
@@ -12,19 +12,19 @@ class Count extends Component {
 
     add = () => {
         const {value} = this.selectNmuber
-        store.dispatch(createIncrementAction(value*1))
+        store.dispatch(increment(value*1))
     }
     
     deAdd = () => {
         const {value} = this.selectNmuber
-        store.dispatch(createDecrementAction(value*1))
+        store.dispatch(decrement(value*1))
     }
 
     addIfOadd = () => {
         const {value} = this.selectNmuber
         const count = store.getState()
         if(count % 2 !== 0){
-             store.dispatch(createIncrementAction(value*1))
+             store.dispatch(increment(value*1))
         }
     }
 

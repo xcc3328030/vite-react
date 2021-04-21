@@ -1,11 +1,9 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import countReducer from './reducers/count'
-import personReducer from './reducers/person'
 
-const allReducer = combineReducers({
-    he: countReducer,
-    ren: personReducer
-})
+// 引入工具插件
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-export default createStore(allReducer, applyMiddleware(thunk))
+import reducer from './reducers'
+
+export default createStore(reducer, composeWithDevTools(applyMiddleware(thunk)))

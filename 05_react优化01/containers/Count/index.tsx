@@ -1,7 +1,7 @@
 import ContainerUI from '../../compontents/Count'
 
 import { connect } from 'react-redux'
-import { createIncrementAction, createDecrementAction, asyncAction } from '../../redux/count_action'
+import { increment, decrement, asyncAction } from '../../redux/count_action'
 
 const mapStateToProps = state =>  ({ count: state})
 
@@ -9,10 +9,10 @@ const mapStateToProps = state =>  ({ count: state})
 // const mapDispatchToProps = (dispatch) => {
 //     return {
 //         addNumber: (number: number) => {
-//             dispatch(createIncrementAction(number))
+//             dispatch(increment(number))
 //         },
 //         deNumber: (number: number) => {
-//             dispatch(createDecrementAction(number))
+//             dispatch(decrement(number))
 //         },
 //         asyncNumber: (number: number, time) => {
 //              dispatch(asyncAction(number, time))
@@ -21,7 +21,7 @@ const mapStateToProps = state =>  ({ count: state})
 // }
 
 export default connect(mapStateToProps, {
-    addNumber: createIncrementAction,
-    deNumber: createDecrementAction,
+    addNumber: increment,
+    deNumber: decrement,
     asyncNumber: asyncAction,
 })(ContainerUI)

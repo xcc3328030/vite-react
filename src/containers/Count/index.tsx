@@ -2,18 +2,18 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react';
 
-import { createIncrementAction, createDecrementAction, asyncAction } from '../../redux/actions/count'
+import { increment, decrement, asyncAction } from '../../redux/actions/count'
 
 // const mapStateToProps = state =>  ({ count: state})
 // const mapDispatchToProps = (dispatch) => {
 //     return {
-//         addNumber: (number: number) => {
-//             dispatch(createIncrementAction(number))
+//         increment: (number: number) => {
+//             dispatch(increment(number))
 //         },
-//         deNumber: (number: number) => {
-//             dispatch(createDecrementAction(number))
+//         decrement: (number: number) => {
+//             dispatch(decrement(number))
 //         },
-//         asyncNumber: (number: number, time) => {
+//         asyncAction: (number: number, time) => {
 //              dispatch(asyncAction(number, time))
 //         },
 //     }
@@ -29,24 +29,24 @@ class Count extends Component {
 
     add = () => {
         const {value} = this.selectNmuber
-        this.props.addNumber(value*1)
+        this.props.increment(value*1)
     }
     
     deAdd = () => {
         const {value} = this.selectNmuber
-         this.props.deNumber(value*1)
+         this.props.decrement(value*1)
     }
 
     addIfOadd = () => {
         const {value} = this.selectNmuber
         if(this.props.count % 2 !== 0){
-             this.props.addNumber(value*1)
+             this.props.increment(value*1)
         }
     }
 
     addIfAsync = () => {
         const {value} = this.selectNmuber
-         this.props.asyncNumber(value*1, 500)
+         this.props.asyncAction(value*1, 500)
     }
 
     render() {
@@ -54,7 +54,7 @@ class Count extends Component {
             <div>
                 <h1>我是count组件</h1>
                 <h4>当前求和为：{this.props.count}</h4>
-                <h3>下方人数为：{this.props.renshu}</h3>
+                <h3>下方人数为：{this.props.person}</h3>
                 <select ref={c=>this.selectNmuber=c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -70,10 +70,13 @@ class Count extends Component {
 }
 
 export default connect(
-    state =>  ({ count: state.he, renshu: state.ren.length}), 
+    state =>  ({ 
+        count: state.count, 
+        person: state.person.length
+    }), 
     {
-        addNumber: createIncrementAction,
-        deNumber: createDecrementAction,
-        asyncNumber: asyncAction,
+        increment,
+        decrement,
+        asyncAction,
     }
 )(Count)
