@@ -1,9 +1,8 @@
 
-import { INCREMENT, DECREMENT } from './constant';
-
+import { INCREMENT, DECREMENT } from '../constant'
 
 let initState = 0
-export default function countReducer(preState = initState, action) {
+export default function countReducer (preState = initState, action) {
 
     const { data, type } = action
     switch (type) {
