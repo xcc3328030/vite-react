@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import store from '../../redux/store'
+import { createIncrementAction, createDecrementAction, asyncAction } from '../../redux/count_action';
 
 class Count extends Component {
 
@@ -10,30 +12,31 @@ class Count extends Component {
 
     add = () => {
         const {value} = this.selectNmuber
-        this.props.addNumber(value*1)
+        store.dispatch(createIncrementAction(value*1))
     }
     
     deAdd = () => {
         const {value} = this.selectNmuber
-         this.props.deNumber(value*1)
+        store.dispatch(createDecrementAction(value*1))
     }
 
     addIfOadd = () => {
         const {value} = this.selectNmuber
-        if(this.props.count % 2 !== 0){
-             this.props.addNumber(value*1)
+        const count = store.getState()
+        if(count % 2 !== 0){
+             store.dispatch(createIncrementAction(value*1))
         }
     }
 
     addIfAsync = () => {
         const {value} = this.selectNmuber
-         this.props.asyncNumber(value*1, 500)
+        store.dispatch(asyncAction(value*1, 500))
     }
 
     render() {
         return (
             <div>
-                <h1>当前求和为：{this.props.count}</h1>
+                <h1>当前求和为：{store.getState()}</h1>
                 <select ref={c=>this.selectNmuber=c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
