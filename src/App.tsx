@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Count from './containers/Count'
 import  Person  from './containers/Person'
-import StateSet from './components/State'
+import StateSet from './compontents/State'
 
 
 // import Count from './containers/Count'
