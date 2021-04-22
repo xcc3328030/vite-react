@@ -4,16 +4,21 @@ import  Person  from './containers/Person'
 import StateSet from './components/State'
 
 
+// import Count from './containers/Count'
+// import  Person  from './containers/Person'
+// import LazyLoad from './compontents/LazyLoad';
+import Hooks from './compontents/Hooks';
 class App extends Component {
     render() {
         return (
             <div>
-                <Count  />
+                {/* <Count  />
                 <hr/>
                 <Person />
                 <hr/>
-
-                <StateSet />
+                <LazyLoad /> */}
+                <hr/>
+                <Hooks />
             </div>
         );
     }
