@@ -28,7 +28,7 @@ function Hooks (){
     }
 
    function changeName () {
-         setName(value => value = '1111')
+         setName('1111')
     }
 
     return (
