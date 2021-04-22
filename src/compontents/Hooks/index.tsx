@@ -52,6 +52,9 @@ function Hooks (){
     function show(){
         alert(myRef.current.value)
     }
+//    function changeName () {
+//          setName('1111')
+//     }
 
     return (
         <div>
