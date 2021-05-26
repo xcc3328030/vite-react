@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import ReactDOM from 'react-dom'
 
@@ -20,13 +20,13 @@ import ReactDOM from 'react-dom'
 //     }
 // }
 
-function Hooks (){
-    const [count, setCount] = React.useState(0)
+function Hooks() {
+    const [count, setCount] = useState(0)
     // const [name, setName] = React.useState('xcc')
 
-    React.useEffect(()=>{
-        let timer = setInterval(()=>{
-            setCount(value => value+1)
+    React.useEffect(() => {
+        let timer = setInterval(() => {
+            setCount(value => value + 1)
         }, 1000)
 
         return () => {
@@ -34,27 +34,27 @@ function Hooks (){
         }
     }, [])
 
-    function add () {
+    function add() {
         // setCount(count+1)
-        setCount(value => value+1)
+        setCount(value => value + 1)
     }
 
-    function unmount(){
+    function unmount() {
         ReactDOM.unmountComponentAtNode(document.getElementById('root'))
     }
 
-//    function changeName () {
-//          setName('1111')
-//     }
+    //    function changeName () {
+    //          setName('1111')
+    //     }
 
     const myRef = React.useRef()
 
-    function show(){
+    function show() {
         alert(myRef.current.value)
     }
-//    function changeName () {
-//          setName('1111')
-//     }
+    //    function changeName () {
+    //          setName('1111')
+    //     }
 
     return (
         <div>
@@ -62,7 +62,7 @@ function Hooks (){
             <h2>当前求和为：{count}</h2>
             {/* <h2>我的名字：{name}</h2> */}
             <button onClick={add}>点我+1</button>
-             {/* <button onClick={changeName}>改变名字</button> */}
+            {/* <button onClick={changeName}>改变名字</button> */}
             <button onClick={unmount}>卸载组件</button>
 
             <input type="text" ref={myRef} />
